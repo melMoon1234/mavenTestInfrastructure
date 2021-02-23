@@ -4,8 +4,7 @@ pipeline {
         stage('Validating template') {
             steps {
                 echo 'Building..'
-                sh "cfn-lint EC2Deployment.yml"
-                }
+                sh "cfn-lint ./lambdadeploy/${lambdaName}-stack.yaml"
             }
         }
         stage('Upload CFT to S3') {
