@@ -1,7 +1,7 @@
 ---
 Resources:
  MyEc2Instance:
-  Type: AWS:EC2:Instance
+  Type: AWS::EC2::Instance
   Properties:
     AvailabilityZone: sa-east-1
     ImageId: ami-05e306425f1cd0c3d
