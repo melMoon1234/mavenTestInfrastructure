@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Upload CFT to S3') {
             steps {
-                withAWS(role:"${awsRole}") {
+                withAWS(role:"${awsRole}", roleSessionName:"test") {
                     sh 'aws s3 ls'                
                 }
             }
