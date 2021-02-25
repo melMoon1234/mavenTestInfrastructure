@@ -7,7 +7,8 @@ pipeline {
         stage('Validating template') {
             steps {
                 echo 'Building..'
-                sh "cfn-lint validate EC2Deployment.yml"
+                //sh "cfn-lint validate EC2Deployment.yml"
+                sh 'aws s3 ls'
             }
         }
         stage('Upload CFT to S3') {
