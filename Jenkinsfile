@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        awsRole = "${env.DEPLOYMENT_ROLE}"
+    }
     stages {
         stage('Validating template') {
             steps {
@@ -8,8 +11,8 @@ pipeline {
             }
         }
         stage('Upload CFT to S3') {
-            steps {
-                echo 'Building..'
+            withAWS(role:"${awsRole}") {
+                sh 'aws s3 ls'                
             }
         }
         stage('Deploy CFT') {
