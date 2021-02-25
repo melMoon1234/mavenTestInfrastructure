@@ -7,13 +7,12 @@ pipeline {
         stage('Validating template') {
             steps {
                 echo 'Building..'
-                //sh "cfn-lint validate EC2Deployment.yml"
-                sh 'aws s3 ls'
+                sh "cfn-lint validate EC2Deployment.yml"                
             }
         }
         stage('Upload CFT to S3') {
             steps {
-                withAWS(role:"${awsRole}", roleSessionName:"test") {
+                withAWS(role:"${awsRole}") {
                     sh 'aws s3 ls'                
                 }
             }
